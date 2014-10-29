@@ -1,0 +1,50 @@
+<div ng-controller="searchCtrl" ng-show="isLogin">
+  <div class="ui page grid">
+    <div class="one column row">
+      <div class="column">
+        <input id="globalSearchQ" type="text" class="grandsearch" ng-model="query" ng-keydown="keyPress($event);"
+          focus-me="{{shouldFocus}}" placeholder="电影 电视 综艺 体育...">
+        <!-- <input type="text" class="grandsearch back" ng-value="query"> -->
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+  </div>
+  
+  <!-- 搜索结果 start -->
+  <div class="ui four wide page items" ng-show="showResult">
+    
+    <div class="item" ng-repeat="item in searchResult track by $index" tabindex="0">
+      <div class="image">
+        <!-- <img ng-src="http://placehold.it/225x250&text={{item.image}}" ng-click="detailItem($event, item.id)"> -->
+        <!-- <img ng-src="{{item.image}}" loading-src="http://placehold.it/225x250&text=Loading" fallback-src="http://placehold.it/225x250&text=NoImage" 
+          ng-click="gotoDetailItem($event, item.id)"> -->
+        <img ng-src="{{item.image}}" loading-src="{{item.image}}" fallback-src="{{item.image}}" 
+          ng-click="gotoDetailItem($event, item.id)">
+        <a class="star ui corner label" ng-click="fav(item.id, item.displayTitle);">
+          <i class="star icon"></i>
+        </a>
+      </div>
+      <div class="content" ng-click="gotoDetailItem($event, item.id)">
+        <div class="name">{{item.displayTitle}}</div>
+        <!-- <p class="description">{{item.description}}</p> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="ui four wide page items" ng-show="showAddItem">
+    <div class="item" ng-click="toAddContent();">
+      <div class="image">
+        <img ng-src="http://placehold.it/225x250&text=NEW">
+        <a class="star ui corner label">
+          <i class="star icon"></i>
+        </a>
+      </div>
+      <div class="content">
+        <div class="name">Add a new Content?</div>
+        <p class="description">or you could try another search word</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索结果 end -->  
+</div>

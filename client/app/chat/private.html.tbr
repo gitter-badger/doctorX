@@ -1,0 +1,84 @@
+<div class="ui fluid icon input">
+			<input type="text" placeholder="Find someone">
+			<i class="search icon"></i>
+		</div>
+		<div class="ui fluid animated divided relaxed list">
+			<a class="item">
+				<img class="ui mini circular image" src="../images/avatar-me.jpg">
+				<div class="content">
+					<div class="header">KennyZJ</div>
+					<span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Shanghai</span>
+				</div>
+				<i class="right floated small user green icon"></i>
+			</a>
+			<a class="item">
+				<img class="ui mini circular image" src="../images/avatar-me1.jpg">
+			  	<div class="content">
+				    <div class="header">Zhangjian</div>
+				    <span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Shanghai</span>
+				</div>
+				<i class="right floated small user green icon"></i>
+			</a>
+			<a class="item">
+			  	<img class="ui mini circular image" src="../images/avatar-me2.jpg">
+				<div class="content">
+					<div class="header">faye</div>
+					<span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Beijing</span>
+				</div>
+				<i class="right floated small user icon"></i>
+			</a>
+		</div>
+		<link rel="stylesheet" type="text/css" href="/css/chat.css">
+		<div class="module" >
+			<div class="top-bar">
+				<div class="left">
+				  <!-- <span class="icon typicons-message"></span> -->
+				  <i class="icon chat"></i>
+				  <h1>KennyZJ</h1>
+				</div>
+				<div class="right">
+				  <!-- <span class="icon typicons-minus"></span>
+				  <span class="icon typicons-times"></span> -->
+				  <i class="icon minus"></i>
+				  <i class="icon close"></i>
+				</div>
+			</div>
+			<ol class="discussion">
+				<li class="other">
+					<div class="avatar">
+						<img src="/images/avatar-me1.jpg">
+					</div>
+					<div class="messages">
+						<p>yeah, they do early flights cause they connect with big airports. they wanna get u to your connection</p>
+						<time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+					</div>
+				</li>
+				<li class="self">
+					<div class="avatar">
+						<img src="/images/avatar-me.jpg">
+					</div>
+					<div class="messages">
+						<p>That makes sense.</p>
+						<p>It's a pretty small airport.</p>
+						<time datetime="2009-11-13T20:14">37 mins</time>
+					</div>
+				</li>
+				<li class="other">
+					<div class="avatar">
+						<img src="/images/avatar-me1.jpg">
+					</div>
+					<div class="messages">
+						<p>that mongodb thing looks good, huh?</p>
+						<p>tiny master db, and huge document store</p>
+					</div>
+				</li>
+			</ol>
+			<div class="ui fluid icon big input">
+				<input type="text" placeholder="Which room" ng-model="whichRoom">
+				<i class="home icon"></i>
+			</div>
+			<div class="ui fluid icon big input">
+				<input id="msgBox" type="text" placeholder="say something" ng-model="msg" ng-keydown="keydown($event);">
+				<i class="level down icon"></i>
+			</div>
+		</div>

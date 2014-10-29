@@ -1,0 +1,284 @@
+<link rel="stylesheet" type="text/css" href="/css/room.css">
+
+<!-- <div ng-controller="roomHomeCtrl" class="wrapper"> -->
+<div ng-controller="roomHomeCtrl" class="roomContainer">
+	<div class="ui page stackable grid">
+		<div class="row ui text shape">
+			<div class="sides">
+				<h3 class="ui header active side">
+					<i class="play red icon"></i>
+					<div class="content">{{contentProfile.displayTitle}}
+						<div class="sub header">{{contentProfile.nativeTitle}}</div>
+					</div>
+				</h3>
+				<h3 class="ui  header side">
+					<i class="blue male icon"></i>
+					<div class="content">xxx进入频道
+						<div class="sub header">Sep 15, 21:48:44</div>
+					</div>
+				</h3>
+				<h3 class="ui  header side">
+					<i class="red female icon"></i>
+					<div class="content">xxx进入频道
+						<div class="sub header">Sep 15, 21:48:44</div>
+					</div>
+				</h3>
+				<!-- <h3 class="ui block header side" ng-repeat="item in msgs | orderBy:predicate:false">
+					<i class="play icon"></i>
+					<div class="content">{{item.msg}}
+						<div class="sub header">{{item.ts}}</div>
+					</div>
+				</h3> -->
+			</div>
+		</div>
+		<div class="row">
+			<!-- <div class="one wide column">
+				
+			</div> -->
+			<div class="eight wide column"  id="roomTalkContainer"><!-- style="max-height:70vh;overflow:scroll;" -->
+				
+				<div class="ui list">
+					<!-- <div class="ui striped progress">
+      					<div class="bar" style="width:82%"></div>
+    				</div> -->
+					<div class="item msg" ng-repeat="item in msgs | orderBy : predicate : true">
+						<div class="ui inverted dimmer">
+							<div class="content">
+								<div class="center">
+									<span style="font-size:1.2em;">
+										<i class="inverted circular comment blue link icon"></i>
+										<i class="inverted circular thumbs up red link icon"></i>
+										<i class="inverted circular thumbs down green link icon"></i>
+										<i class="inverted circular retweet orange link icon"></i>
+										<i class="inverted circular pin teal link icon"></i>
+										<i class="inverted circular ellipsis horizontal purple link icon"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- <img class="ui mini circular image" src="/images/avatar-me.jpg"> -->
+						<!-- <div class="content"> -->
+							<!-- <div ng-class="{ ui:true, pointing:true, left:true, label:true, msgsticker:true, black:item.creator === me, lightnavy:item.creator != me }"> -->
+							<!-- <div ng-class="{ ui:true, block:true, header:true, msgsticker:true, inverted:true, black:item.creator === me, green:item.creator != me }"> -->
+							<div ng-class="{note:true, ignore:item.creator === me, ink:item.creator != me}">
+								<!-- <span class="emj">&#x1F645;</span>  换成中文怎么样 <i class="user icon"></i> 看起来一点都不差啊中文。法国迎战非洲雄鹰尼日利亚！阿尔及利亚对阵日耳曼战车！是德法顺利晋级，还是本届世界杯首次淘汰赛爆冷？回顾下历史交锋情况，尼日利亚于2009年小胜法国；而德国则是两战皆负！ -->
+								<img class="ui mini left floated circular image" src="/images/avatar-me.jpg">{{item.msg}}
+
+							</div>
+							<h5 class="ui right floated header" style="color:rgba(149, 149, 149, 0.4)" am-time-ago="item.ts"></h5>
+							<!-- <h5 class="ui block header">{{item.ts}}</h5> -->
+						<!-- </div> -->
+					</div>
+					<!-- <div class="item msg">
+						<div class="ui inverted dimmer">
+							<div class="content">
+								<div class="center">
+									<span style="font-size:1.2em;">
+										<a><i class="comment blue icon"></i></a>
+										<a><i class="thumbs up red icon"></i></a>
+										<a><i class="thumbs down green icon"></i></a>
+										<a><i class="retweet orange icon"></i></a>
+										<a><i class="pin teal icon"></i></a>
+										<a><i class="ellipsis horizontal purple icon"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="ui red label msgsticker"><span class="emj">&#x1F377;</span>  【B-Glowing 额外7.5折】购买Peter Thomas Roth彼得罗夫满$75享受额外7.5折，推荐收推荐收彼得罗夫青瓜面膜，抗衰老眼部修护啫喱， 玻尿酸保湿精华, 防晒乳，龙血再生Laser-Free系列等明星产品，比手快！戳：<a target="_blank" href="http://t.cn/RvSNyr7">http://t.cn/RvSNyr7</a></div>
+					</div>
+					<div class="item msg">
+						<div class="ui inverted dimmer">
+							<div class="content">
+								<div class="center">
+									<span style="font-size:1.2em;">
+										<a><i class="comment blue icon"></i></a>
+										<a><i class="thumbs up red icon"></i></a>
+										<a><i class="thumbs down green icon"></i></a>
+										<a><i class="retweet orange icon"></i></a>
+										<a><i class="pin teal icon"></i></a>
+										<a><i class="ellipsis horizontal purple icon"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="ui  black  label msgsticker"><span class="emj">&#x1F375;</span>  welcome to this welcome to this <i class="user icon"></i> roomwelcome to this roomwelcome to this roomwelcome to this roomome to this roomweis roomwelcome to this roomwelcome to this room</div>
+					</div>
+					<div class="item msg">
+						<div class="ui inverted dimmer">
+							<div class="content">
+								<div class="center">
+									<span style="font-size:1.2em;">
+										<a><i class="comment blue icon fa-spin"></i></a>
+										<a><i class="thumbs up red icon fa-spin"></i></a>
+										<a><i class="thumbs down green icon fa-spin"></i></a>
+										<a><i class="retweet orange icon fa-spin"></i></a>
+										<a><i class="pin teal icon fa-spin"></i></a>
+										<a><i class="ellipsis horizontal purple icon fa-spin"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="ui  green label msgsticker"><span class="emj">&#x1F3A7;</span>  welcome to this welcome to this <span class="emj fa-spin">&#x1F300;</span> roomwelcome to this roomwelcome to this roomwelcome to this roomome to this roomwelcome to this roomwelcome to this roomwelcome to this room</div>
+					</div>-->
+				</div>
+				<!-- end of ui list -->
+			</div>
+			<!-- end of middle column -->
+			<div class="four wide column" id="roomFeedContainer"><!-- style="max-height:70vh;overflow:scroll;" -->
+				<div class="ui one items">
+					<div class="item feedCard">
+						<div class="ui  dimmer">
+							<div class="content">
+								<div class="center">
+									<span style="font-size:1.2em;">
+										<i class="comment inverted circular blue link icon"></i>
+										<i class="thumbs up red inverted circular link icon"></i>
+										<i class="thumbs down green inverted circular link icon"></i>
+										<i class="retweet orange inverted circular link icon"></i>
+										<i class="pin teal inverted circular link icon"></i>
+										<i class="ellipsis horizontal purple inverted circular link icon"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="image">
+							<img src="/images/thenewsroom.jpg">
+						</div>
+						<div class="ui red right corner label"><i class="fire icon"></i></div>
+						<div class="content">
+							<div class="meta"><i class="time icon"></i>5 min ago</div>
+							<div class="name">KennyZJ</div>
+							<p class="description"><img class="ui mini right floated circular image" src="/images/avatar-me.jpg">换成中文怎么样，看起来一点都不差啊中文。法国迎战非洲雄鹰尼日利亚！阿尔及利亚对阵日耳曼战车！是德法顺利晋级，还是本届世界杯首次淘汰赛爆冷？回顾下历史交锋情况，尼日利亚于2009年小胜法国；而德国则是两战皆负！
+							</p>
+							<!-- <p>
+								<div class="ui small labels">
+									<a class="ui label" ng-click="test();">Wordcup</a>
+									<a class="ui label" ng-click="test();">世界杯</a>
+									<a class="ui label" ng-click="test();">Wordcup</a>
+									<a class="ui label" ng-click="test();">世界杯</a>
+									<a class="ui label" ng-click="test();">Wordcup</a>
+									<a class="ui label" ng-click="test();">世界杯</a>
+								</div>
+							</p> -->
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+					<div class="item feedCard">
+						<div class="image">
+							<img src="/images/thenewsroom1.jpg">
+						</div>
+						<div class="content">
+							<div class="meta">5 min ago</div>
+							<div class="name">KennyZJ</div>
+
+							<p class="description"><img class="ui mini left floated circular image" src="/images/avatar-me.jpg">【B-GLOWING 额外7.5折】购买PETER THOMAS ROTH彼得罗夫满$75享受额外7.5折，推荐收推荐收彼得罗夫青瓜面膜，抗衰老眼部修护啫喱， 玻尿酸保湿精华, 防晒乳，龙血再生LASER-FREE系列等明星产品，比手快！戳：HTTP://T.CN/RVSNYR7</p>
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+					<div class="item feedCard">
+						<div class="content">
+							<div class="meta">5 min ago</div>
+							<div class="name">法国迎战非洲雄鹰尼日利亚！阿尔及利亚对阵日耳曼战车！</div>
+							<p class="description">WELCOME TO THIS WELCOME TO THIS  ROOMWELCOME TO THIS ROOMWELCOME TO THIS ROOMWELCOME TO THIS ROOMOME TO THIS ROOMWEIS ROOMWELCOME TO THIS ROOMWELCOME TO THIS ROOM</p>
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+					<div class="item feedCard">
+						<div class="content">
+							<div class="meta">5 min ago</div>
+							<div class="name">KennyZJ</div>
+							<p class="description">换成中文怎么样，看起来一点都不差啊中文。法国迎战非洲雄鹰尼日利亚！阿尔及利亚对阵日耳曼战车！是德法顺利晋级，还是本届世界杯首次淘汰赛爆冷？回顾下历史交锋情况，尼日利亚于2009年小胜法国；而德国则是两战皆负！This is a long long long word.</p>
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+					<div class="item feedCard">
+						<div class="content">
+							<div class="meta">5 min ago</div>
+							<div class="name">KennyZJ</div>
+							<p class="description">换成中文怎么样，看起来一点都不差啊中文。法国迎战非洲雄鹰尼日利亚！阿尔及利亚对阵日耳曼战车！是德法顺利晋级，还是本届世界杯首次淘汰赛爆冷？回顾下历史交锋情况，尼日利亚于2009年小胜法国；而德国则是两战皆负！</p>
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="four wide column">
+				<!-- <div class="ui one items">
+					<div class="item feedCard">
+						<div class="image">
+							<img ng-src="{{msg}}" loading-src="{{msg}}" fallback-src="/images/avatar-me.jpg">
+						</div>
+						<div class="content">
+							<div class="name">{{msg}}</div>
+						</div>
+					</div>
+				</div> -->
+				<div class="contentcover">
+					<img width="100%" ng-src="{{msg}}" loading-src="{{msg}}" fallback-src="/images/avatar-me.jpg">
+					<span class="ui small header title">{{msg}}</span>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+
+	<div class="roomDashboard">
+		<div class="ui tiny block icon center aligned header">
+			<i class="male link icon" ng-click="shapeflipUp();"></i>
+			<!-- <div class="sub header">在线人数</div> -->
+			21025
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui tiny block icon center aligned header">
+			<i class="female link icon" ng-click="shapeflipDown();"></i>
+			<!-- <div class="sub header">在线人数</div> -->
+			4434
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui tiny block icon center aligned header">
+			<i class="wrench link icon" ng-click="shapeflipUp();"></i>
+			<!-- <div class="sub header">工</div>21025 -->
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui tiny block icon center aligned header">
+			<i class="mail outline link icon" ng-click="shapeflipUp();"></i>
+			<!-- <div class="sub header">工</div>21025 -->
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui tiny block icon center aligned header">
+			<i class="mute link icon" ng-click="shapeflipUp();"></i>
+			<!-- <div class="sub header">工</div>21025 -->
+		</div>
+		<div class="ui divider"></div>
+		<div class="ui tiny block icon center aligned header">
+			<i class="play sign link icon" ng-click="shapeflipUp();"></i>
+			<!-- <div class="sub header">工</div>21025 -->
+		</div>
+	</div>
+	<div class="directionBtn">
+		<div id="backToTop" class="ui tiny block icon center aligned header" ng-click="toTop();">
+			<i class="icon double angle up"></i>
+		</div>
+		<div id="downToBottom" class="ui tiny block icon center aligned header" ng-click="toBottom();">
+			<i class="icon double angle down"></i>
+		</div>
+	</div>
+
+
+	<div class="roomTalkBox">
+		<div class="ui huge fluid icon input">
+			<input class="thickborder square" type="text" placeholder="say something" ng-model="msg" ng-keydown="keydown($event);">
+			<!-- <textarea id="msgBox" class="thickborder square" type="text" placeholder="say something" ng-model="msg" ng-keydown="keydown($event);"> -->
+			<i ng-class="iconcolor">
+				<div ng-class="{ui:true, lightnavy:msg.length < MSG_LIMIT || !msg.length, orange:msg.length == MSG_LIMIT, red:msg.length > MSG_LIMIT, floating:true, label:true}">{{msg.length ? MSG_LIMIT - msg.length : MSG_LIMIT}}</div>
+			</i>
+		</div>
+	</div>
+
+
+</div>

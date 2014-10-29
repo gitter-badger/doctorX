@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+  		<title>app home</title>
+  		<!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'> -->
+  		<link href="css/font.css" rel="stylesheet">
+      <link href="lib/semantic-ui/css/semantic.css" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="lib/ng-tags-input/ng-tags-input.css"> -->
+      <link href="css/main.css" rel="stylesheet">
+      <link href="font/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+      <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> -->
+      <script type="text/javascript" src="lib/moment/moment.js"></script>
+	</head>
+	<!-- <body ng-keyup="globalKeyUp($event);"> -->
+  <body>
+    <div class="ui small hidden icon message" id="optMsg">
+      <i class="bell outline icon"></i>
+      <div class="content">
+        <div class="header">{{sysMsg}}</div>
+      </div>
+    </div>
+
+    <!-- main frame start -->
+    <div id="global" ng-controller="mainframeCtrl">
+      <!-- top menu bar start -->
+      <div class="ui  secondary large menu" ng-show="isLogin">
+        <div class="ui animated vertical black button floated left" ng-click="toggleMenu();">
+          <div class="visible content">谈客</div>
+          <div class="hidden content">TUMKR</div>
+        </div>
+
+
+        <div class="ui icon buttons floated right">
+          <div ng-class="{ui:true, button:true, red:showSearch, inverted:showSearch}" ng-click="toggleSearch();">
+            <i class="search icon"></i>
+          </div>
+          
+          <div class="ui button right top pointing dropdown" id="postBtn">
+            <i class="pencil icon"></i>
+            <div class="menu">
+              <a class="item" ng-click="writeWord();"><i class="quote left blue icon"></i>Word</a>
+              <a class="item" ng-click="writeReview();"><i class="edit orange icon"></i>Review</a>
+            </div>
+          </div>
+          <div class="ui button" ng-click="toggleSN();">
+            <i class="bell icon"></i>
+          </div>
+          <div class="ui button" id="chatBtn" ng-click="toggleChat();">
+            <i class="chat icon"></i>
+          </div>
+
+        </div>
+
+
+        <!-- <div class="ui circular icon button floated right" ng-click="toggleChat();">
+          <i class="chat icon"></i>
+        </div>
+        <div class="ui circular icon button floated right" ng-click="toggleSN();">
+          <i class="bell outline icon"></i>
+        </div>
+        <div class="ui circular icon button left top pointing dropdown floated right" id="postBtn">
+            <i class="pencil icon"></i>
+            <div class="menu">
+              <a class="item" ng-click="writeWord();"><i class="quote left blue icon"></i>Word</a>
+              <a class="item" ng-click="writeReview();"><i class="edit orange icon"></i>Review</a>
+            </div>
+        </div>
+        <div id="toggleSearchBtn" class="ui circular icon button floated right" ng-click="toggleSearch();">
+          <i class="search icon"></i>
+        </div> -->
+
+        <div ng-include="'app/word/post.html'"></div>
+        <div ng-include="'app/review/post.html'"></div>
+        <!-- <div class="items floated right">
+          <div class="ui icon input">
+            <input type="text" placeholder="Keywords. . ."></input>
+            <i class="search link icon"></i>
+          </div>
+        </div> -->
+      </div>
+      <!-- top menu bar end -->
+      <div id="menuBar" class="ui thin sidebar labeled icon inverted vertical menu">
+          <div class="header item">
+            <div class="ui image small circular">
+              <img src="/images/avatar-me1.jpg">
+            </div>
+
+            <div class="ui header">{{user.username}}
+              <div class="ui lightnavy circular label">L{{user.level+1}}</div>
+            </div>
+          </div>
+          <a class="active red item" href="/#!/home/following"><i class="home icon"></i>Home</a>
+          <a class="red item" href="/#!/home/subscribing"><i class="book icon"></i>Notebook</a>
+          <a class="red item"><i class="calendar icon"></i>Calendar</a>
+          <a class="red item" href="/#!/circle"><i class="users icon"></i>Circle</a>
+          <a class="red item" target="_blank" href="/pubContent"><i class="unhide icon"></i>Discovery</a>
+          <a class="red item" href="/#!/fav"><i class="video icon"></i>My Favorite</a>
+          <a class="red item" href="/#!/setting"><i class="setting icon"></i>Setting</a>
+          <a class="red item" href="/#!/login"><i class="sign out icon"></i>Logout</a>
+      </div>
+      
+      <div id="chatBar" style="background-color:#fff;" ng-controller="chatCtrl" ng-include="chatBarTplt" class="ui right sidebar"></div>
+      <div id="sysNotesBar" ng-include="sysNotesBarTplt" class="ui right styled sidebar red inverted menu"></div>
+      <div id="dmBoxBar" style="background-color:#fff;" ng-include="dmBoxTplt" class="ui right sidebar"></div>
+      <div id="searchBox" ng-show="showSearch" ng-include="'app/search/search.html'"></div>
+    </div>
+    <!-- main frame end -->
+
+    <div id="container" ng-view>
+      <div class="ui basic center aligned segment"><i class="loading big icon"></i></div>
+    </div>
+    
+	</body>
+	<footer>
+    <script type="text/javascript" src="lib/jquery/jquery.js"></script>
+    <!--<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>-->
+    
+    <script type="text/javascript" src="lib/semantic-ui/javascript/semantic.min.js"></script>
+		<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+		<script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
+		<script type="text/javascript" src="lib/angular-cookies/angular-cookies.js"></script>
+    <script type="text/javascript" src="lib/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="lib/angular-img-fallback/angular.dcb-img-fallback.min.js"></script>
+    <!--<script type="text/javascript" src="lib/ng-tags-input/ng-tags-input.js"></script>-->
+    <script type="text/javascript" src="lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script type="text/javascript" src="lib/angular-socket-io/socket.js"></script>
+		<script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/socketio/index.js"></script>
+    <script type="text/javascript" src="app/common/index.js"></script>
+		<script type="text/javascript" src="app/auth/index.js"></script>
+		<script type="text/javascript" src="app/user/index.js"></script>
+    <script type="text/javascript" src="app/underscoreWrap/index.js"></script>
+    <script type="text/javascript" src="app/home/index.js"></script>
+    <script type="text/javascript" src="app/frame/index.js"></script>
+    <script type="text/javascript" src="app/search/index.js"></script>
+    <script type="text/javascript" src="app/poi/index.js"></script>
+    <script type="text/javascript" src="app/content/index.js"></script>
+    <script type="text/javascript" src="app/word/index.js"></script>
+    <script type="text/javascript" src="app/feed/index.js"></script>
+		<script type="text/javascript" src="app/moduleA/moduleA.js"></script>
+    <script type="text/javascript" src="app/room/index.js"></script>
+    <script type="text/javascript" src="app/setting/index.js"></script>
+    <script type="text/javascript" src="app/circle/index.js"></script>
+    <script type="text/javascript" src="app/chat/index.js"></script>
+		<script type="text/javascript" src="//localhost:35729/livereload.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="lib/underscore/underscore.js"></script>    
+    <script type="text/javascript" src="lib/angular-moment/angular-moment.min.js"></script>
+    
+	</footer>
+</html>

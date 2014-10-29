@@ -1,0 +1,28 @@
+{
+  "name": "doctorX",
+  "version": "0.0.1",
+  "authors": [
+    "KennyZJ <ken.zhangjian@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.15",
+    "angular-cookies": "*",
+    "angular-animate": "*",
+    "jquery": "~2.0.0",
+    "angular-socket-io": "0.6.0",
+    "underscore": "1.6.0",
+    "moment": "2.7.0",
+    "ngInfiniteScroll": "1.1.2",
+    "angular-moment": "~0.8.1"
+  }
+}

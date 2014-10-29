@@ -1,0 +1,230 @@
+<div class="ui page grid" ng-controller="circleCtrl">
+	<div class="six wide column" ng-controller="friendMgmtCtrl">
+		
+		<div class="ui thick segment">
+			<h3 class="ui header">
+				<i class="users circular inverted green icon"></i>
+				小伙伴们
+			</h3>
+			<div class="ui left icon fluid input">
+				<input type="search" ng-model="grcode" class="thickborder square" placeholder="用身份码搜寻小伙伴" ng-keydown="grcodeSearchKD($event)">
+				<i class="search icon"></i>
+			</div>
+			<div class="ui error message" ng-show="err">{{err}}</div>
+			<div class="ui thick segment nameCard" ng-show="searchedUser">
+				<p>
+					<img class="ui small left floated circular image" src="/images/avatar-me.jpg">
+					<div class="ui header">{{searchedUser.username}}</div>
+					来自星星的他，这个人很懒，没有留下任何介绍。很懒很懒很懒很懒很懒很懒很
+				</p>
+				<button id="followBtn" class="ui lemongreen fluid button" ng-click="followBtnClick();">{{followBtnText}}</button>
+			</div>
+		</div>
+
+		<div class="ui small modal" id="friendGroupModal">
+			<i class="close icon"></i>
+			<div class="header"><i class="sitemap blue icon"></i>所在圈子</div>
+			<div class="content">
+				<div class="left secondary">
+					<img class="ui medium image" src="/images/avatar-me2.jpg">
+					<div class="ui center aligned header">{{currentFriend.username}}</div>
+				</div>
+				<div class="right primary">
+
+					<div class="ui basic segment">
+						<div class="ui basic center aligned segment" ng-show="!groupsLoaded"><i class="loading big icon"></i></div>
+						<div class="ui large labels" ng-show="groupsLoaded">
+							<a ng-class="{ui:true, label:true, red:group.in}" ng-repeat="group in allGroups track by group.id" ng-click="toggleGroupClick(group);"><i class="remove sign icon" ng-show="group.in"></i><i class="add sign icon" ng-show="!group.in"></i> {{group.displayTitle}}</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="actions" ng-show="toggleGroupOptMsg">
+				<div class="ui error message" >{{toggleGroupOptMsg}}</div>
+			</div>
+		</div>
+
+
+		<div class="ui thick segment">
+
+			<div id="friendsSwitchBar" class="ui green secondary pointing fluid two item menu">
+				<a class="active item" ng-click="friendsSide = 'following';">
+					<!-- <i class="user icon"></i> -->
+					我关注的<div class="ui small green label">{{followingCount}}</div>
+				</a>
+				<a class="item" ng-click="friendsSide = 'follower';">
+					<!-- <i class="user icon"></i> -->
+					关注我的<div class="ui small green label">{{followerTotalCount}}</div>
+				</a>
+			</div>
+			<div ng-switch on="friendsSide">
+				<div class="ui selection list" ng-switch-when="following">
+					<div class="ui left icon fluid input"  ng-show="followingCount != 0">
+						<input type="search" ng-model="q1" class="borderless square" placeholder="筛选小伙伴" tabIndex="0">
+						<i class="filter icon"></i>
+					</div>
+					<div class="ui divider"></div>
+					<div class="ui center aligned disabled segment" ng-show="followingCount==0">还没找到小伙伴</div>
+
+					<div ng-show="groupFilterTitle">
+						<!-- <div class="ui horizontal divider">
+							<a ng-click="clearGroupFilter();">{{groupFilterTitle}} ({{groupFilterCount}})</a>
+						</div> -->
+						
+						<div class="ui horizontal labels">
+							<div class="ui label">
+								{{groupFilterTitle}}
+								<div class="detail"><i class="user icon"></i> {{groupFilterCount}}</div>
+							</div>
+							<!-- <a class="ui label black" ng-click="clearGroupFilter();">
+								清除
+							</a> -->
+						</div>
+						<div class="ui horizontal icon divider">
+							<div class="ui rotate reveal"><i class="hidden content circular link delete icon" ng-click="clearGroupFilter();"></i><i class="visible content circular inverted sitemap icon"></i></div>
+						</div>
+					</div>
+					<a class="item following" ng-repeat="people in followingList | filter:q1 track by people._id" draggable="true">
+						<i class="right floated red square inverted link trash icon ui simple dropdown">
+							<div class="menu">
+								<div class="item" ng-click="unfollowBtnClick(people);" style="font-weight:bold;">确定取消关注？</div>
+							</div>
+						</i>
+						<i class="right floated blue square inverted link sitemap icon" ng-click="toGroupingFriend(people);">
+							<!-- <div class="menu">
+								<div class="item" style="font-weight:bold;">添加到a;添加到a;添加到a;添加到a</div>
+								<div class="item" style="font-weight:bold;">添加到b</div>
+								<div class="item" style="font-weight:bold;">添加到c</div>
+							</div> -->
+						</i>
+						<img class="ui mini rounded image" src="/images/avatar-me.jpg">
+						<div class="content">
+							<div class="header">{{people.username}}</div>
+						</div>
+					</a>
+
+				</div>
+				<div class="ui selection list" ng-switch-when="follower">
+					<!-- <input type="search" ng-model="q" /> -->
+					<div class="ui left icon fluid input" ng-show="followerTotalCount != 0">
+						<input type="search" ng-model="q2" class="borderless square" placeholder="筛选小伙伴">
+						<i class="filter icon"></i>
+					</div>
+					<div class="ui divider"></div>
+					<div class="ui center aligned disabled segment" ng-show="followerTotalCount==0">还没被小伙伴发现</div>
+					<a class="item" ng-repeat="people in ignoredFollowerList | filter:q2" draggable="true">
+						<i class="right floated green square inverted link add icon ui simple dropdown">
+							<div class="menu">
+								<div class="item" ng-click="followItemClick(people, $event);" style="font-weight:bold;">确定关注？</div>
+							</div>
+						</i>
+						<img class="ui mini rounded image" src="/images/avatar-me.jpg">
+						<div class="content">
+							<div class="header">{{people.username}}</div>
+						</div>
+					</a>
+					<a class="item" ng-repeat="people in mutualFollowerList | filter:q2" draggable="true">
+						<button class="right floated tiny disabled ui button" disabled>已关注</button>
+						<img class="ui mini rounded image" src="/images/avatar-me.jpg">
+						<div class="content">
+							<div class="header">{{people.username}}</div>
+						</div>
+					</a>
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="six wide column">
+		<div class="ui thick segment" id="dropdiv" ng-controller="groupMgmtCtrl">
+			<h3 class="ui header">
+				<i class="sitemap circular inverted blue icon"></i>
+				小伙伴分组
+			</h3>
+			<!-- <div class="ui mini basic button right floated" ng-click="toCreateGroup();">
+				<i class="sitemap icon"></i>创建
+			</div> -->
+			<div class="ui left icon fluid input">
+				<input type="text" ng-model="displayTitle" class="thickborder square" placeholder="新建小组" ng-keydown="create($event);">
+				<i class="add icon"></i>
+			</div>
+			<div class="ui message" id="groupOptMsgBox" ng-show="optMsg">{{optMsg}}</div>
+
+			<div class="ui center aligned disabled segment" ng-show="!groups || !groups.length">还没分组</div>
+			<div class="ui small modal" id="groupModifyModal">
+				<i class="close icon"></i>
+				<div class="header"><i class="pencil blue icon"></i>修改分组</div>
+				<div class="content">
+					<div class="left secondary">
+						<i class="sitemap icon"></i>
+					</div>
+					<div class="right primary">
+						<div class="ui fluid input">
+							<input type="text" class="thickborder square" ng-model="selectedGroupName" ng-keydown="renameGroupKD($event);" placeholder="小组">
+							<!-- <i class="sitemap icon"></i> -->
+						</div>
+					</div>
+				</div>
+				<div class="actions">
+					<div class="ui cancel button">Cancel</div>
+					<div class="ui ok blue right labeled icon button">Modify<i class="checkmark icon"></i></div>
+				</div>
+			</div>
+			<div class="ui small modal" id="groupDeleteConfirmModal">
+				<i class="close icon"></i>
+				<div class="header"><i class="trash red icon"></i>删除分组</div>
+				<div class="content">
+					<div class="left secondary">
+						<i class="sitemap icon"></i>
+					</div>
+					<div class="right primary">
+						<h1 class="ui header">{{deletingDisplayTitle}}</h1>
+						<p style="font-weight:bold;">确定删除以上分组？</p>
+					</div>
+				</div>
+				<div class="actions">
+					<div class="ui cancel button">No</div>
+					<div class="ui ok red right labeled icon button">Yes<i class="checkmark icon"></i></div>
+				</div>
+			</div>
+			<div class="ui center aligned thick segment groupItem" ng-repeat="group in groups">
+				<div class="ui inverted dimmer">
+					<div class="content">
+						<div class="center">
+							<i class="pencil inverted square link icon" ng-click="toRenameGroup(group.id, group.displayTitle);"></i>
+							<i class="trash inverted square red link icon" ng-click="toDeleteGroup(group.id, group.displayTitle);"></i>
+							<i class="sitemap inverted square blue link icon" ng-click="filterMembersByGroup(group.id, group.displayTitle);"></i>
+						</div>
+					</div>
+				</div>
+				<h3 class="ui header">{{group.displayTitle}}</h3>
+				<div class="ui small bottom right attached label">{{group.count}}</div>
+			</div>
+
+
+			<!-- <div class="ui selection list">
+				<div class="ui center aligned disabled segment" ng-show="!groups || !groups.length">还没分组</div>
+				<a class="item" ng-repeat="group in groups" ng-click="rename(group.id, group.displayTitle + '--revision');">
+					<div class="content">
+						<div class="header">{{group.displayTitle}}</div>
+					</div>
+				</a>
+			</div> -->
+		</div>
+	</div>
+	<div class="four wide column">
+		<div class="ui rosered thick segment">
+			<h3 class="ui header">
+				<i class="puzzle piece circular inverted orange icon"></i>
+				心有灵犀
+			</h3>
+			<div class="ui selection list">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

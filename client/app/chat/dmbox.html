@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="/css/chat.css">
+<div ng-controller="dmBoxCtrl">
+	<div class="ui icon red button" ng-click="backToPrivateChat();">
+		<i class="left arrow icon"></i>
+	</div>
+	<span class="ui header">{{talkToWhom.username}}</span>
+		
+	<div class="module" class="ui segment">
+		<!-- <div class="top-bar">
+			<div class="left">
+			  <span class="icon typicons-message"></span>
+			  <i class="icon chat"></i>
+			  <h1>KennyZJ</h1>
+			</div>
+			<div class="right">
+			  <span class="icon typicons-minus"></span>
+			  <span class="icon typicons-times"></span>
+			  <i class="icon minus"></i>
+			  <i class="icon close"></i>
+			</div>
+		</div> -->
+		<ol class="discussion isolateScrollable" keep-scroll id="privateChatBox">
+
+			<li ng-class="{chatline:true, other:item.from === talkToWhom._id, self:item.from != talkToWhom._id}" scroll-item ng-repeat="item in msgs | orderBy : predicate : false">
+				<div class="avatar">
+					<img src="/images/avatar-me1.jpg">
+				</div>
+				<div class="messages">
+					<p>{{item.msg}}</p>
+				</div>
+				<div class="ui inverted dimmer">
+					<div class="content">
+						<div class="center">
+							<time><span am-time-ago="item.ts"></span></time>
+						</div>
+					</div>
+				</div>
+			</li>
+			<!-- <li class="self">
+				<div class="avatar">
+					<img src="/images/avatar-me.jpg">
+				</div>
+				<div class="messages">
+					<p>That makes sense.</p>
+					<p>It's a pretty small airport.</p>
+					<time><span am-time-ago="item.ts"></span></time>
+				</div>
+			</li>
+			<li class="other">
+				<div class="avatar">
+					<img src="/images/avatar-me1.jpg">
+				</div>
+				<div class="messages">
+					<p>that mongodb thing looks good, huh?</p>
+					<p>tiny master db, and huge document store</p>
+				</div>
+			</li> -->
+		</ol>
+		
+	</div>
+
+	<div class="footer">
+		<div class="ui fluid icon input">
+			<input id="msgBox" class="thickborder square" type="text" placeholder="say something" ng-model="msg" ng-keydown="keydown($event);">
+			<!-- <textarea id="msgBox" class="thickborder square" type="text" placeholder="say something" ng-model="msg" ng-keydown="keydown($event);"> -->
+			<i class="level down icon"></i>
+		</div>
+	</div>
+
+
+</div>

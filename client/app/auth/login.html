@@ -1,0 +1,138 @@
+<!-- <div ng-controller="auth.loginCtrl">
+	<h3>{{title}}</h3>
+	<h3>{{token}}</h3>
+	<form name="loginForm" ng-submit="login()">
+		<input type="text" name="username" ng-model="username" placeholder="username/email" required/>
+		<input type="password" name="password" ng-model="password" placeholder="password"/>
+		<button type="submit">submit</button>
+	</form>
+	
+	<button ng-click="twitterLogin()">twitter</button>
+</div> -->
+<div class="ui page relaxed grid">
+	<div class="four wide column"></div>
+	<div class="eight wide column" ng-controller="auth.loginCtrl">
+		<div class="ui form segment">
+			<h3 class="ui header">Login</h3>
+			<form name="loginForm" ng-submit="login()">
+		  		<div class="field">
+		    		<div class="ui left labeled icon input">
+				      <input type="email" ng-model="email" placeholder="email" required focus-me="true">
+				      <i class="mail icon"></i>
+				      <div class="ui corner label">
+				        <i class="icon asterisk"></i>
+				      </div>
+		    		</div>
+		  		</div>
+		  		<div class="field">
+				    <div class="ui left labeled icon input">
+				      <input type="password" ng-model="password" placeholder="password" required>
+				      <i class="lock icon"></i>
+				      <div class="ui corner label">
+				        <i class="icon asterisk"></i>
+				      </div>
+				    </div>
+		  		</div>
+		  		<!-- <div class="ui small buttons"> -->
+		  		<div class="field">
+		  			<button class="ui blue fluid submit button" type="submit">login</button>
+		  		</div>
+		  			<!-- <div class="or"></div> -->
+		  			<!-- <div class="ui green button">微博</div> -->
+		  			<!-- <div class="ui facebook button">Facebook</div>
+		  			<div class="ui twitter button">Twitter</div> -->
+
+		  			<div class="inline field">
+						<i class="weibo red link circular inverted icon"></i>
+						<i class="twitter blue link circular inverted icon" ng-click="twitterLogin()"></i>
+						<a class="ui green circular large label" ng-click="doubanLogin()">豆</a>
+		  			</div>
+		  		<!-- </div> -->
+		  	</form>
+		  	<div class="ui error message">
+				<div class="header">We noticed some issues</div>
+			</div>
+		</div>
+		<div class="ui horizontal divider">
+	    	Or
+	  	</div>
+	  	<div class="center aligned column" ng-controller="auth.registerCtrl">
+			<a class="ui red labeled icon huge button" ng-click="pop()"><i class="signup icon"></i>Join Now</a>
+			<div class="ui modal" id="register">
+			  <i class="close icon"></i>
+			  <div class="header">
+			  	New Account
+			  </div>
+			  <div class="content ui form">
+			    <!-- <div class="left">
+			      Content can appear on left
+			    </div>
+			    <div class="right">
+			      Content can appear on right
+			    </div> -->		    
+			    <!-- <form name="regForm"> -->
+			    	<div class="field">
+			    		<label>Email</label>
+			    		<div class="ui left labeled icon input">
+					      <input type="email" ng-model="email" placeholder="email" required>
+					      <i class="mail icon"></i>
+					      <div class="ui corner label">
+					        <i class="icon asterisk"></i>
+					      </div>
+			    		</div>
+			  		</div>
+			  		<div class="field">
+			    		<label>Display Name</label>
+			    		<div class="ui left labeled icon input">
+					      <input ng-model="username" placeholder="username" required>
+					      <i class="user icon"></i>
+					      <div class="ui corner label">
+					        <i class="icon asterisk"></i>
+					      </div>
+			    		</div>
+			  		</div>
+			  		<div class="field">
+			  			<label>Gender</label>
+				  		<div id="genderDD" class="ui fluid selection dropdown" ng-click="dropdown()">
+						  <input type="hidden" name="gender">
+						  <div class="default text">Gender</div>
+						  <i class="dropdown icon"></i>
+						  <div class="menu">
+						    <div class="item" data-value="1">Male</div>
+						    <div class="item" data-value="0">Female</div>
+						  </div>
+						</div>
+					</div>
+			  		<div class="field">
+			  			<label>Password</label>
+					    <div class="ui left labeled icon input">
+					      <input type="password" ng-model="password" placeholder="password" required>
+					      <i class="lock icon"></i>
+					      <div class="ui corner label">
+					        <i class="icon asterisk"></i>
+					      </div>
+					    </div>
+			  		</div>
+			  		<div class="inline field">
+					    <div class="ui checkbox">
+					      <input type="checkbox" id="agreement">
+					      <label>I agree to all the Terms and Conditions</label>
+					    </div>
+					</div>
+					<button class="ui red button" ng-click="register();">ok</button>
+			    <!-- </form> -->
+			    
+			  </div>
+			 <!--  <div class="actions">
+			    <div class="ui button cancel">Cancel</div>
+			    <div class="ui red button" type="submit">OK</div>
+			    <div class="ui red submit button ok">OK</div>
+			  </div> -->
+			</div>
+		</div>
+		<div class="four wide column"></div>
+	</div>
+
+	
+	
+</div>

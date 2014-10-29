@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		title=title
+	body
+		h2 Login
+		div
+			form(method='post', action='/login')
+				div
+					label Username:
+					input(type='text', name='username')
+				div
+					label Password:
+					input(type='password', name='password')
+				div
+					input(type='submit', value='Login')

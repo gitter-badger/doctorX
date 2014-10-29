@@ -1,0 +1,53 @@
+{
+  "name": "doctorX",
+  "version": "0.0.1",
+  "description": "Kickstart",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KennyZJ",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --harmony server"
+  },
+  "dependencies": {
+    "koa": "latest",
+    "koa-router": "latest",
+    "koa-views": "latest",
+    "koa-static": "latest",
+    "co-body": "latest",
+    "koa-logger": "latest",
+    "koa-session": "latest",
+    "jade": "*",
+    "bower": "*",
+    "koa-passport": "0.3.0",
+    "passport-local": "~1.0.0",
+    "passport-facebook": "~1.0.2",
+    "passport-twitter": "~1.0.2",
+    "passport-google": "0.3.0",
+    "passport-weibo": "*",
+    "passport-douban": "*",
+    "thunkify": "*",
+    "mongoose": "^3.8.3",
+    "redis": "0.10.3",
+    "socket.io": "1.0",
+    "node-uuid": "*",
+    "co": "3.0.6",
+    "pinyin": "2.3.2",
+    "underscore": "1.6.0"
+  },
+  "engines": {
+    "node": ">= 0.11.9"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "latest"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  }
+}

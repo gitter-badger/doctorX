@@ -1,0 +1,217 @@
+.roomContainer {
+    padding-bottom: 80px;
+}
+
+.directionBtn {
+  position: fixed;
+  bottom: 0;
+  /*width: ;*/
+  margin-left: 0;
+  /*opacity: 0.85;*/
+  z-index: 999;
+  padding: 0;
+
+  -webkit-perspective: 2000px;
+  -moz-perspective: 2000px;
+  -ms-perspective: 2000px;
+  perspective: 2000px;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.directionBtn > div {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.roomDashboard {
+  position: fixed;
+  margin-left: 0;
+  top: 20%;
+  /*width: 20%;*/
+  /*opacity: 0.85;*/
+  /*z-index: 999;*/
+  /*padding: 0;*/
+
+  /*-webkit-perspective: 2000px;
+  -moz-perspective: 2000px;
+  -ms-perspective: 2000px;
+  perspective: 2000px;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;*/
+}
+.roomDashboard > div {
+  margin: 0 !important;
+}
+
+.roomTalkBox{
+  position: fixed;
+  bottom: 12px;
+  width: 50%;
+  left: 25%;
+  opacity: 0.85;
+  z-index: 1001;
+
+  -webkit-perspective: 2000px;
+  -moz-perspective: 2000px;
+  -ms-perspective: 2000px;
+  perspective: 2000px;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* Main site body */
+.wrapper {
+  width: 940px;
+  margin: 0 auto;
+  position: relative; /* Ensure absolute positioned child elements are relative to this */
+}
+
+/* Absolute positioned wrapper for the element you want to fix position */
+.fixed-wrapper {
+  width: 220px;
+  position: absolute;
+  top: 10px;
+  right: -240px; /* Move this out to the left of the site body, leaving a 20px gutter */
+  
+}
+
+/* The element you want to fix the position of */
+.fixed {
+  width: 220px;
+  position: fixed;
+  opacity: 0.7;
+  /* Do not set top / left! */
+}
+
+.note {
+    position:relative;
+    overflow:hidden; /* hides part of the box-shadow */
+    padding:20px;
+    margin:0.5em 2%;
+    color:#f8f8f8;
+    line-height: 1.6em !important;
+    /*background:#97C02F;*/
+    /*background: #6797ad;*/
+}
+
+.note:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    border-width:0 16px 16px 0;
+    border-style:solid;
+    /*border-color:#658E15 #efefef;*/
+    /*border-color:#4c7081 #efefef;*/
+    /* css3 extras */
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+       -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+            box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.note.self {
+    background: #6797ad;
+}
+.note.self:before {
+    border-color: #4c7081 #efefef;
+}
+
+.note.other {
+    background:#97C02F;
+}
+.note.other:before {
+    border-color:#658E15 #efefef;
+}
+
+.note.friend {
+    background: #ba6a70;
+}
+.note.friend:before {
+    border-color:#8b4f53 #efefef;
+}
+
+.note.ignore {
+    color: #737373 !important;
+    font-weight: bold;
+    /*background: #dbdbdb;*/
+    background: rgba(219, 219, 219, 0.4);
+}
+.note.ignore:before {
+    /*border-color:#c1c1c1 #efefef;*/
+    border-color: rgba(193, 193, 193, 0.4) rgba(255, 255, 255, 0.4);
+}
+.note.bright {
+    background:#97C02F;
+}
+.note.bright:before {
+    border-color:#658E15 #efefef;
+}
+.note.ink {
+    /*background: rgba(80, 97, 109, 0.4);*/
+    background: rgba(57, 98, 141, 0.4);
+}
+.note.ink:before {
+    /*border-color:rgba(47, 57, 64, 0.4) #efefef;*/
+    border-color:rgba(46, 78, 112, 0.4) #efefef;
+}
+
+.ui.progress .bar {
+  -webkit-animation: finish 5s ease-in-out infinite;
+  -moz-animation: finish 10s ease-in-out infinite;
+  -ms-animation: finish 10s ease-in-out infinite;
+  animation: finish 5s ease-in-out infinite;
+}
+@-webkit-keyframes finish {
+  0% {
+    width: 0%;
+  }
+  20% {
+    width: 33%;
+  }
+  40% {
+    width: 0%;
+  }
+  60% {
+    width: 66%;
+  }
+  80% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes finish {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes finish {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}

@@ -1,0 +1,48 @@
+<div class="ui page grid" ng-controller="contentCreateCtrl">	
+	<div class="row">
+		<div class="eight wide column">
+			<div class="ui form thick segment" id="contentCreationForm">
+				<div class="ui error message"></div>
+				<h4 class="ui header">{{title}}</h4>
+				<!-- <form name="contentForm" ng-submit="postContent();"> -->
+					<div class="field">
+						<label>Display Title</label>
+						<input type="text" name="display-title" ng-model="content.displayTitle" focus-me="{{shouldFocus}}" placeholder="display title" required>
+					</div>
+					<div class="field">
+						<label>Native Title</label>
+						<input type="text" name="native-title" ng-model="content.nativeTitle" placeholder="native title">
+					</div>
+					<div class="field">
+						<label>Content Type</label>
+						<div class="ui fluid selection dropdown" id="contentType">
+							<!-- <input type="hidden" name="ctype"> -->
+							<div class="default text" data-value="unknown">Choose</div>
+							<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item" data-value="movie">Movie</div>
+								<div class="item" data-value="tvseries">TV Series</div>
+								<div class="item" data-value="tvshow">TV Show</div>
+								<div class="item" data-value="tvepisode">TV Episode</div>
+								<div class="item" data-value="sportsgame">Sports Game</div>
+							</div>
+						</div>
+					</div>	
+					<div class="field">
+						<label>Description</label>
+						<textarea ng-model="content.description" placeholder="description"></textarea>
+					</div>
+					<!-- <div class="inline field">
+						<div class="ui checkbox">
+							<input type="checkbox">
+							<label>fdsa</label>
+						</div>
+					</div> -->
+					<button class="ui teal circular button submit">Create</button>
+				<!-- </form> -->
+			</div>
+		</div>
+
+	</div>
+	
+</div>

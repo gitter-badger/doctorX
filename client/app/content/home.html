@@ -1,0 +1,325 @@
+<div class="ui wide page stackable grid" ng-controller="contentHomeCtrl">
+	<!-- <div class="row">
+		
+		<div class="sixteen wide column contentcover">
+			<img width="100%" src="../images/thenewsroom.jpg">	
+			<span class="ui huge header title">新闻编辑室</span>
+		</div>
+		
+	</div> -->
+	<div class="two column row">
+		<div class="three wide column">
+			<div class="ui large header">{{contentProfile.displayTitle}}
+				<div class="ui star rating" data-rating="4">
+					<i class="icon"></i>
+					<i class="icon"></i>
+					<i class="icon"></i>
+					<i class="icon"></i>
+					<i class="icon"></i>
+				</div>
+			</div>
+			<div class="ui tiny block header">流派</div>
+			<div class="ui horizontal divided list">
+				<a class="item">剧情</a>
+				<a class="item">政治</a>
+			</div>
+			
+			<div class="ui tiny block header">导演</div>
+			<div class="ui list">
+				<a class="item">格雷格·莫托拉</a>
+				<a class="item">艾利克斯·格雷夫斯</a>
+				<a class="item">艾伦·瑞克曼</a>
+				<a class="item">莱斯利·林卡·格拉特</a>
+			</div>
+			<div class="ui tiny block header">编剧</div>
+			<div class="ui divided horizontal list">
+				<a class="item">艾伦·索金</a>
+			</div>
+			<div class="ui tiny block header">主演</div>
+			<div class="ui list">
+				<a class="item">杰夫·丹尼尔斯</a>
+				<a class="item">艾米莉·莫迪默</a>
+				<a class="item">艾丽森·皮尔</a>
+				<a class="item">小约翰·加拉赫</a>
+				<a class="item">戴夫·帕特尔</a>
+				<a class="item">托马斯·萨多斯基</a>
+				<a class="item">萨姆·沃特森</a>
+				<a class="item">简·方达</a>
+				<a class="item">奥立薇娅·玛恩 Olivia Munn</a>
+			</div>
+			<div class="ui tiny block header">国家</div>
+			<div class="ui tiny block header">上映时间</div>
+			<div class="ui tiny block header">片长</div>
+			<p>该剧讲述了一个虚构电视台“亚特兰蒂斯有线新闻台”（简称：ACN）台前幕后的故事。Will McAvoy（杰夫·丹尼尔斯 Jeff Daniels 饰）是一位资深新闻节目主持人，为ACN电视网八点档旗舰节目《晚间新闻》带来超高收视率，但因为飞扬跋扈、刚愎自用，引发过团队成员的不满。在他刚结束休假回到办公室后，发现他的大部分部下将要另谋他就，集体被挖角。</p>
+			<div class="ui buttons fluid" >
+				<a class="ui tiny button">Read More</a>
+			</div>
+		</div>
+		
+		
+		<div class="thirteen wide column">
+			<div id="contentcover">
+				<div class="ui dimmer">
+					<!-- <div class="ui text loader">loading</div> -->
+					<h2 class="ui header">This is back side</h2>
+					<div class="ui medium images">
+						<div class="ui move left reveal">
+							<img class="visible content" src="../images/drama-poster-1.jpg">
+							</img>
+							<img class="hidden content" src="../images/drama-poster-2.jpg" >
+							</img>
+						</div>
+						<div class="ui move right reveal">
+							<img class="visible content" src="../images/drama-poster-1.jpg">
+							</img>
+							<img class="hidden content" src="../images/drama-poster-3.jpg">
+							</img>
+						</div>
+						<!-- <img class="ui image" src="../images/drama-poster-1.jpg">
+						<img class="ui image" src="../images/drama-poster-1.jpg">
+						<img class="ui image" src="../images/drama-poster-1.jpg">
+						<img class="ui image" src="../images/drama-poster-1.jpg"> -->
+
+					</div>
+				</div>
+				<img width="100%" src="../images/thenewsroom.jpg">
+				<span class="ui huge header title">{{contentProfile.displayTitle}}</span>
+			</div>
+			<div class="ui labels header">
+				<a class="ui black label">
+					<i class="icon tag"></i>价值观
+				</a>
+				<a class="ui black label">
+					<i class="icon tag"></i>自由
+				</a>
+				<a class="ui black label">
+					<i class="icon tag"></i>媒体责任
+				</a>
+				<a class="ui label">
+					<i class="icon add"></i>添加
+				</a>
+
+				<div class="right floated ui mini buttons">
+					<div class="ui black button">
+						<i class="bookmark icon"></i>已收藏
+					</div>
+					<div class="ui red animated fade button" ng-click="joinRoom();">
+						<div class="visible content">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="chat icon"></i>LIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div class="hidden content">
+							<i class="users icon"></i>1120 在线
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui stackable grid">
+				<div class="twelve wide column" id="gfw">
+					<!-- <div class="ui dimmer">
+						<div class="ui text loader">loading</div>
+						<div class="ui header">This is back side</div>
+					</div> -->
+					<h5 class="ui header">
+						<i class="comment icon"></i>
+							<div class="content">Great Free Wall
+							</div>
+					</h5>
+
+					<!-- <div class="ui secondary pointing menu">
+						<a class="active item">
+							<i class="home icon"></i> Home
+						</a>
+						<a class="item">
+							<i class="home icon"></i> Messages
+						</a>
+					</div> -->
+
+					<div class="ui minimal comments segment">
+						<a class="ui black ribbon label">Me & Friends</a>
+						<div class="comment">
+							<a class="avatar">
+								<img src="../images/avatar-me.jpg">
+							</a>
+							<div class="content">
+								<a class="author">KennyZJ</a>
+								<div class="metadata">
+									<div class="date">10 min ago</div>
+									
+								</div>
+								<div class="text">
+									该剧讲述了一个虚构电视台“亚特兰蒂斯有线新闻台”（简称：ACN）台前幕后的故事。
+								</div>
+								<div class="actions">
+									<a><i class="comment icon"></i></a>
+									<a><i class="thumbs up icon"></i></a>
+									<a><i class="thumbs down icon"></i></a>
+									<a><i class="retweet icon"></i></a>
+									<a><i class="pin icon"></i></a>
+									<a><i class="ellipsis horizontal icon"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="ui divider"></div>
+						<div class="comment">
+							<a class="avatar">
+								<img src="../images/avatar-me.jpg">
+							</a>
+							<div class="content">
+								<a class="author">KennyZJ</a>
+								<div class="metadata">
+									<div class="date">10 min ago</div>
+									<div class="stars">
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon half star"></i>
+									</div>
+								</div>
+								<div class="text">
+									没人觉得女主很傻很装么，7集弃
+								</div>
+								<div class="actions">
+									<a class="reply">Reply</a>
+									<a class="delete">Delete</a>
+								</div>
+							</div>
+						</div>
+						<div class="ui divider"></div>
+						<div class="comment">
+							<a class="avatar">
+								<img src="../images/avatar-me.jpg">
+							</a>
+							<div class="content">
+								<a class="author">KennyZJ</a>
+								<div class="metadata">
+									<div class="date">10 min ago</div>
+									<div class="stars">
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon star"></i>
+										<i class="icon empty star"></i>
+									</div>
+								</div>
+								<div class="text">
+									没人觉得女主很傻很装么，7集弃
+								</div>
+								<div class="actions">
+									<a class="reply">Reply</a>
+									<a class="delete">Delete</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="ui feed raised segment">
+						<a class="ui ribbon label">Reviews</a>
+						<div class="event">
+							<div class="label">
+								<i class="user icon circular"></i>
+							</div>
+							<div class="content">
+								<div class="date">10 min ago</div>
+								<div class="summary">没人觉得女主很傻很装么，7集弃</div>
+								<div class="extra text">没人觉得女主很傻很装么，7集弃没人觉得女主很傻很装么，7集弃</div>
+								<div class="extra actions">
+									<a><i class="comment icon"></i></a>
+									<a><i class="thumbs up icon"></i></a>
+									<a><i class="thumbs down icon"></i></a>
+									<a><i class="retweet icon"></i></a>
+									<a><i class="pin icon"></i></a>
+									<a><i class="ellipsis horizontal icon"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ui feed raised segment">
+						<a class="ui ribbon label">Comments</a>
+						<div class="event">
+							<div class="label">
+								<img src="../images/avatar-me.jpg">
+							</div>
+							<div class="content">
+								<div class="date">10 min ago</div>
+								<div class="summary">没人觉得女主很傻很装么，7集弃</div>
+							</div>
+						</div>
+					</div>
+					<div class="ui feed raised segment">
+						<div class="event">
+							<div class="label">
+								<img src="../images/avatar-me.jpg">
+							</div>
+							<div class="content">
+								<div class="date">10 min ago</div>
+								<div class="summary">没人觉得女主很傻很装么，7集弃</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="four wide column">
+					<h5 class="ui block header">Seasons</h5>
+					<div class="ui relaxed selection list">
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Season 1</div>
+							</div>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Season 2</div>
+							</div>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Season 3</div>
+							</div>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Season 4</div>
+							</div>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Season 5</div>
+							</div>
+						</div>
+						<div class="ui horizontal icon divider">
+							<i class="add icon"></i>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Law and Order</div>
+							</div>
+						</div>
+						<div class="item">
+							<i class="right floated video icon"></i>
+							<div class="content">
+								<div class="header">Boston Legal</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+	</div>
+	
+	
+	
+</div>
+<div id="subContentList" class="ui thin sidebar teal vertical menu">
+  <a class="red item"><i class="home icon"></i>Portfolio</a>
+  <a class="red item"><i class="book icon"></i>Notebook</a>
+  <a class="red item"><i class="calendar icon"></i>Calendar</a>
+</div>

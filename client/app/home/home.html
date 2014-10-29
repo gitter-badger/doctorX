@@ -1,0 +1,183 @@
+<style type="text/css">
+	img.content { 
+		display: block;
+	    /*margin-left: auto;
+	    margin-right: auto;*/
+    	margin:auto;
+		max-width: 90%;
+	}
+</style>
+<!-- <link href="../../css/timeline.css" rel="stylesheet"> -->
+<div ng-controller="homeCtrl">
+	<div class="ui basic modal" style="height:96%;" id="imageModal">
+		<i class="close icon"></i>
+		<!-- <div class="content"> -->
+		<img ng-src="{{imgToPop}}" class="content">
+		<!-- </div> -->
+	</div>
+
+
+	<div class="ui page grid">
+		<!-- <div class="ten wide column"> -->
+			<!-- The Timeline -->
+
+			<!-- <ul class="timeline">
+				<li>
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag">Apple Inc.</span>
+							<span class="time-wrapper"><span class="time">2011 - 2013</span></span>
+						</div>
+						<div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+					</div>
+				</li>
+				<li>
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag">Linkedin</span>
+							<span class="time-wrapper"><span class="time">2011 - 2013</span></span>
+						</div>
+						<div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+					</div>
+				</li>
+				<li>
+					<div class="direction-l">
+						<div class="flag-wrapper">
+							<span class="flag">Google Inc.</span>
+							<span class="time-wrapper"><span class="time">2011 - 2013</span></span>
+						</div>
+						<div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+					</div>
+				</li> -->
+
+				<!-- Item 1 -->
+				<!-- <li ng-repeat="feed in feed_Following track by $index">
+					<div class="direction-r">
+						<div class="flag-wrapper">
+							<span class="flag">{{feed.owner.username}}</span>
+							<span class="time-wrapper"><span class="time" am-time-ago="feed.created"></span></span>
+						</div>
+						<div class="desc">{{feed.summary}}</div>
+					</div>
+				</li> -->
+			<!-- </ul> -->
+		<!-- </div> -->
+		<div ng-class="feedWidth" ng-controller="feedCtrl" ng-init="init(which)">
+			<H2 class="ui header">
+				<i class="ordered list icon"></i>
+				<div class="content">
+					{{which}}
+					<div class="sub header">sub header</div>
+				</div>
+			</H2>
+			<div infinite-scroll="nextPage();" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
+
+				<div class="ui two items">
+					<div class="item feedCard" ng-repeat="feed in feed_Following track by $index" ng-click="clickCard();">
+						<div class="content">
+							<div class="meta"><i class="time icon"></i><span am-time-ago="feed.created"></span></div>
+							<div class="name"  data-title="{{feed.owner.username}}" data-content="{{feed.owner.gender}}">{{feed.owner.username}}</div>
+							<p class="description">{{feed.summary}}</p>
+							<div class="extra"><div class="left"><b>203</b> votes</div></div>
+							<div class="extra"><div class="right"><b>109</b> likes</div></div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="ui  comments thick segment" ng-repeat="feed in feed_Following track by $index">
+					<div class="ui lightnavy ribbon label" ng-if="feed.contentIds && feed.contentIds.length">
+						{{feed.contentIds[0].displayTitle}}<span ng-if="feed.contentIds && feed.contentIds.length > 1">&nbsp;more</span>
+					</div>
+
+					<div class="ui top right attached label">{{feed.type}}</div>
+					
+					<div class="comment">
+						<div class="avatar" data-title="{{feed.owner.username}}" data-content="{{feed.owner.email}}">
+							<img src="/images/avatar-me.jpg">
+						</div>
+						<div class="content">
+							<a class="author">{{feed.owner.username}}</a>
+							<div class="metadata">
+								<div class="date" am-time-ago="feed.created"></div>
+							</div>
+							<div class="text">
+								{{feed.summary}}
+							</div>
+							<div class="actions">
+								<a><i class="comment icon"></i></a>
+								<a><i class="thumbs up icon"></i></a>
+								<a><i class="thumbs down icon"></i></a>
+								<a><i class="retweet icon"></i></a>
+								<a><i class="pin icon"></i></a>
+								<a><i class="ellipsis horizontal icon"></i></a>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<div class="ui basic center aligned segment" ng-show="isLoading"><i class="loading big icon"></i></div>
+			</div>
+		</div>
+		<div class="four wide column" ng-if="which === 'subscribing'" ng-controller="poiShowCtrl">
+			<h2 class="ui header"><i class="fa fa-slack fa-spin"></i>
+				<div class="content">POIs
+					<div class="sub header">Point of Interested Content</div>
+				</div>
+			</h2>
+			<div class="ui list">
+				<div class="item" ng-repeat="item in pois track by $index">
+					<a href="/#!/content/home/{{item._id}}" class="ui large lightnavy horizontal label">{{item.displayTitle}}</a>
+				</div>
+			</div>
+
+			<!-- <object height="350" width="425"><param name="movie" value="http://www.youtube.com/v/OdT9z-JjtJk&autoplay=1" /><embed height="350" src="http://www.youtube.com/v/OdT9z-JjtJk&autoplay=1" type="application/x-shockwave-flash" width="425"></embed></object> -->
+			<!-- <video src="movie.ogg" width="100%" controls="controls">
+			Your browser does not support the video tag.
+			</video> -->
+			<!-- <iframe width="100%" height="350" src="//www.youku.com/embed/7-yCupxxErM-test" frameborder="0" allowfullscreen></iframe> -->
+			<!-- <iframe height="350" width="100%" src="//player.youku.com/embed/XNzA4MTU4NTc2?firsttime=20" frameborder="0" allowfullscreen></iframe> -->
+		</div>
+		<!-- <div class="six wide column">
+			<div class="ui blue feed segment">
+				<div class="event">
+					<div class="label">
+						<img src="/images/avatar-big.png">
+					</div>
+					<div class="content"  id="example">
+						<div class="date">
+							3 min ago
+						</div>
+						<div class="summary">
+							This is a feed
+						</div>
+						<div class="extra images">
+							
+							<img id="demoimg" src="/images/demoimg1.jpg" ng-click="popImage('/images/demoimg1.jpg');">
+							<img src="/images/demoimg2.jpg" ng-click="popImage('/images/demoimg2.jpg');">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="ui feed segment">
+				<H4 class="ui header">Hotspots</H4>
+				<div class="event">
+					<div class="label">
+						<img src="/images/avatar-big.png" data-title="popuptitle" data-content="popupcontent" id="test">
+					</div>
+					<div class="content">
+						<div class="date">
+							3 min ago
+						</div>
+						<div class="summary">
+							This is a feed
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</div>
+
+
+
+
+

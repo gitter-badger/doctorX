@@ -1,0 +1,121 @@
+var redis = require('redis');
+var store = redis.createClient();
+var pub = redis.createClient();
+var subPersonal = redis.createClient();
+var subPublic = redis.createClient();
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+var load = function(app) {
+  var server = require('http').Server(app.callback());
+  var io = require('socket.io')(server);
+  
+  // users' personal message channel
+  subPersonal.subscribe('personal');
+  // public channel for content, tag, user-group etc.
+  subPublic.subscribe('public');
+  
+  var allClients = [];
+  var allUserName = []; //key: socketid, value: userid
+  io.sockets.on('connection', function (client) {
+
+    console.log('top level connection', client.id);
+    console.log('before connect client count', Object.size(allClients));
+    // allClients.push(client);
+
+    // io.sockets.sockets[client.id].socket.setTimeout(15000);
+    // var personalLisenter = function(channel, message){
+      
+    //   console.log('got personal msg',  message);
+    //   var msgObj = JSON.parse(message);
+    //   console.log('message.msg', msgObj.msg);
+    //   client.emit('news', msgObj.msg);
+    //   console.log('index', allClients.indexOf(client));
+    // };
+
+    // by default, every user sub to his/her own 'channel'
+    // subPersonal.on('message', personalLisenter);
+    // var obj = {'msg':'hihi'};
+    // console.log(JSON.stringify(obj));
+    // pub.publish('personal', JSON.stringify(obj));
+
+
+    client.on('disconnect', function() {
+      console.log('disconnect');
+      console.log('before client count', Object.size(allClients));
+      // var i = allClients.indexOf(client);
+      // allClients.splice(i, 1);
+      var clientid = client.id;
+      delete allClients[allUserName[clientid]];
+      delete allUserName[clientid];
+      // console.log(delete allClients[i]);
+      // subPersonal.removeListener('message', personalLisenter);
+      console.log('after client count', Object.size(allClients));
+    });
+
+    client.on('joinOrCreate', function(data) {
+      client.join(data.room);
+    });
+
+    client.on('report', function(userid) {
+      if (allClients[userid] != null || allClients[userid] != undefined) {
+        allClients[userid].disconnect();
+      };
+
+      console.log('got report', userid);
+      allUserName[client.id] = userid;
+      allClients[userid] = client;
+      console.log('after connect client count', Object.size(allClients));
+    });
+
+  });
+
+  var personalLisenter = function(channel, message){
+    try{
+      console.log('message', message);
+      var msgObj = JSON.parse(message);
+      console.log('message', msgObj);
+      if (allClients[msgObj.to]) {
+        allClients[msgObj.to].emit('personal', msgObj);
+      } else {
+        // msg target dose not exist
+      }
+    } catch (err) {
+      console.error('personalLisenter error:', err);
+    }
+  };
+
+  // by default, every user sub to his/her own 'channel'
+  subPersonal.on('message', personalLisenter);
+  
+  
+  var publicListener = function(channel, message) {
+    console.log('got public message', message);
+    var room = message.room;
+
+    // if 'room' alive, emit, or just drop
+    io.sockets.in('room').emit('room:message', message);
+  };
+  subPublic.on('message', publicListener);
+
+  // io.use(function(socket, next) {
+  //   var handshakeData = socket.request;
+  //   console.log('handshakeData', handshakeData.headers);
+  // // make sure the handshake data looks good as before
+  // // if error do this:
+  //   // next(new Error('not authorized');
+  // // else just call next
+  //   next();
+  // });
+
+
+
+  return server;
+}
+
+module.exports = load;

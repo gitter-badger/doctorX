@@ -1,0 +1,42 @@
+<div class="ui page grid">
+	<div class="twelve wide column">
+		<div class="ui thick segment">
+			<h3 class="ui header">
+				<i class="settings inverted orange circular icon"></i>个人设置
+			</h3>
+			<!-- <div class="ui segment">
+				<h5 class="ui header">基本信息</h5>
+			</div> -->
+		</div>
+	</div>
+	<div class="four wide column">
+		<!-- <div class="ui blue progress">
+			<div class="bar" style="width:50%"></div>
+		</div> -->
+		<div class="ui thick segment" ng-controller="ivCtrl">
+			<div class="ui inverted dimmer" id="ivLoader">
+				<div class="ui text loader">获取中...</div>
+			</div>
+			<h4 class="ui left floated header">邀请新朋友</h4>
+			<div class="ui mini basic button right floated" ng-click="ivBtnClick();">获取</div>
+			<div class="ui clearing divider"></div>
+			<i class="gift orange icon"></i>剩余<span style="font-weight:bold;"> {{ivquota}} </span>个邀请码
+			<div id="ivcodeSegment" class="ui thick segment" ng-show="ivcode">{{ivcode.code}}
+				<p style="font-size:0.75em;color:#a7a7a7">有效期至: <span>{{ivcode.hash.expAt | amDateFormat:'D/M/YY, h:mm:ss a'}}</span></p>
+			</div>
+			<p style="font-size:0.85em;">通过邀请码注册成功，你和小伙伴都将获得积分奖励。</p>
+		</div>
+		<div class="ui thick segment" ng-controller="grCtrl">
+			<div class="ui inverted dimmer" id="grLoader">
+				<div class="ui text loader">获取中...</div>
+			</div>
+			<h4 class="ui left floated header">邀请老朋友</h4>
+			<div class="ui mini basic button right floated" ng-click="grBtnClick();">获取</div>
+			<div class="ui clearing divider"></div>
+			<div id="grcodeSegment" class="ui thick segment" ng-show="grcode">{{grcode.code}}
+				<p style="font-size:0.75em;color:#a7a7a7">有效期至: <span>{{grcode.hash.expAt | amDateFormat:'D/M/YY, h:mm:ss a'}}</span></p>
+			</div>
+			<p style="font-size:0.85em;">在本站，你的隐私被非常好的保护，除却不期而遇的邂逅，只有获得一次性的动态身份码，小伙伴才能找到你。</p>
+		</div>
+	</div>
+</div>

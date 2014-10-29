@@ -1,0 +1,60 @@
+<div id="chatBarMenu" class="ui top attached secondary pointing fluid two item large menu">
+	<a class="orange active item" ng-click="chatRegion = 'friends';">
+		<i class="user icon"></i>好友们
+	</a>
+	<a class="orange item" ng-click="chatRegion = 'groups';">
+		<i class="users icon"></i>群组
+	</a>
+</div>
+<div class="ui basic segment" ng-switch on="chatRegion">
+	<div class="ui inverted red segment" ng-switch-when="groups">
+	</div>
+	<div ng-switch-when="friends" ng-controller="privateChatCtrl">
+		<div class="ui fluid left icon input" ng-show="!onlineFriends.length == 0">
+			<input type="search" ng-model="q1" class="borderless square" placeholder="查找在线小伙伴">
+			<i class="search icon"></i>
+		</div>
+		<div class="ui fluid horizontal label" ng-show="onlineFriends.length == 0">小伙伴都不在</div>
+		<div class="ui fluid animated divided relaxed list">
+			<a class="item" ng-repeat="item in onlineFriends | filter:q1 track by $index" ng-click="opendmBox(item);">
+				<img class="ui mini circular image" ng-src="{{item.avatarUrl}}" loading-src="http://placehold.it/80x80&text=Loading" fallback-src="../images/avatar-me.jpg" >
+				<div class="content">
+					<div class="header">{{item.username}}</div>
+					<span style="color:#aaa; font-size:0.9em; font-weight:bold;"><i class="map marker icon"></i>Shanghai</span>
+				</div>
+				<i class="right floated small user green icon"></i>
+			</a>
+
+			<!-- <a class="item">
+				<img class="ui mini circular image" src="../images/avatar-me.jpg">
+				<div class="content">
+					<div class="header">KennyZJ</div>
+					<span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Shanghai</span>
+				</div>
+				<i class="right floated small user green icon"></i>
+			</a>
+			<a class="item">
+				<img class="ui mini circular image" src="../images/avatar-me1.jpg">
+			  	<div class="content">
+				    <div class="header">Zhangjian</div>
+				    <span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Shanghai</span>
+				</div>
+				<i class="right floated small user green icon"></i>
+			</a>
+			<a class="item">
+			  	<img class="ui mini circular image" src="../images/avatar-me2.jpg">
+				<div class="content">
+					<div class="header">faye</div>
+					<span style="color:#ccc; font-size:0.7em;"><i class="map marker icon"></i>Beijing</span>
+				</div>
+				<i class="right floated small user icon"></i>
+			</a> -->
+		</div>
+		
+		
+	</div>
+</div>
+
+
+<!-- <h4 class="ui block header"><i class="chat outline icon"></i>Whisper</h4> -->
+

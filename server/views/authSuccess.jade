@@ -1,0 +1,11 @@
+doctype html
+html
+	head
+	body
+		h2 Authentication Success!
+		input#userid(value='#{userid}' hidden)
+	script(type='text/javascript').
+		console.log(document.getElementById('userid').value);
+		window.localStorage.tumkr = document.getElementById('userid').value;
+		window.opener.location.href = '/';
+		window.close();

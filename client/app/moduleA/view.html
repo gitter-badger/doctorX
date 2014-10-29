@@ -1,0 +1,12 @@
+<div ng-controller="moduleA.someCtrl">
+	<h3>{{title}}</h2>
+	<p>cookiesContent:{{cookiesContent}}</p>
+	<p>passportCookies:{{passportCookies}}</p>
+	<p>{{echo}}</p>
+	<p>Live:</p>
+	<div class="chat-box">
+		<div ng-repeat="item in feeds track by $index">
+			<h6>{{item}}</h6>
+		</div>
+	</div>
+</div>
