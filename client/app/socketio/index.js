@@ -14,12 +14,19 @@ module.factory('mySocket', function(socketFactory, $http, userService, _) {
   // mySocket = socketFactory({
   //   ioSocket: myIoSocket
   // });
+ 
+  var mySocket;
+  
+  try {
+    mySocket = socketFactory();
 
-  var mySocket = socketFactory();
+  } catch(err) {
+    console.warn('socket initialization failed', err);
+    mySocket = null;
+    return
+  }
 
   mySocket.forward('sysNotify');
-
-
   
   mySocket.on('disconnect', function(evt, data) {
     console.log('socket disconnect', evt, data);
