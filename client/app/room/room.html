@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="/css/room.css">
-
 <!-- <div ng-controller="roomHomeCtrl" class="wrapper"> -->
 <div ng-controller="roomHomeCtrl" class="roomContainer">
 	<div class="ui page stackable grid">
@@ -217,10 +216,11 @@
 						</div>
 					</div>
 				</div> -->
-				<div class="contentcover">
+				<div class="contentcover" id="container1">
 					<img width="100%" ng-src="{{msg}}" loading-src="{{msg}}" fallback-src="/images/avatar-me.jpg">
 					<span class="ui small header title">{{msg}}</span>
 				</div>
+				<div class="contentcover" id="preview"></div>
 			</div>
 		</div>
 		
@@ -231,13 +231,15 @@
 		<div class="ui tiny block icon center aligned header">
 			<i class="male link icon" ng-click="shapeflipUp();"></i>
 			<!-- <div class="sub header">在线人数</div> -->
-			21025
+			<!-- 21025 -->
+			{{upPercentage}}
 		</div>
 		<div class="ui divider"></div>
 		<div class="ui tiny block icon center aligned header">
 			<i class="female link icon" ng-click="shapeflipDown();"></i>
 			<!-- <div class="sub header">在线人数</div> -->
-			4434
+			<!-- 4434 -->
+			{{upSpeed}}
 		</div>
 		<div class="ui divider"></div>
 		<div class="ui tiny block icon center aligned header">
@@ -255,8 +257,8 @@
 			<!-- <div class="sub header">工</div>21025 -->
 		</div>
 		<div class="ui divider"></div>
-		<div class="ui tiny block icon center aligned header">
-			<i class="play sign link icon" ng-click="shapeflipUp();"></i>
+		<div class="ui tiny block icon center aligned header" id="openNativeDir">
+			<i class="play sign link icon" ></i>
 			<!-- <div class="sub header">工</div>21025 -->
 		</div>
 	</div>
@@ -280,5 +282,7 @@
 		</div>
 	</div>
 
-
 </div>
+
+<script type="text/javascript" src="../../lib/qiniu/plupload.full.min.js"></script>
+<script type="text/javascript" src="../../lib/qiniu/qiniu.min.js"></script>

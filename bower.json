@@ -23,6 +23,7 @@
     "underscore": "1.6.0",
     "moment": "2.7.0",
     "ngInfiniteScroll": "1.1.2",
-    "angular-moment": "~0.8.1"
+    "angular-moment": "~0.8.1",
+    "plupload-angular-directive": "*"
   }
 }

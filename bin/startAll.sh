@@ -24,3 +24,4 @@ forever start -c 'node -harmony' -o "${doctorX}/log/status.offlinelistener.log" 
 forever start -c 'node -harmony' -o "${doctorX}/log/status.onlinelistener.log" ${doctorX}/server/lib/status/statusOnlineDistributor.js
 forever start -c 'node -harmony' -o "${doctorX}/log/status.timelinebuilder.log" ${doctorX}/server/lib/status/statusTimelineBuilder.js
 echo doctorx status engine started!
+echo You r all set for doctorX!

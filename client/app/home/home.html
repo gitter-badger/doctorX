@@ -113,7 +113,18 @@
 						</div>
 					</div>
 				</div> -->
-				<div class="ui basic center aligned segment" ng-show="isLoading"><i class="loading big icon"></i></div>
+				<!-- <div class="ui basic center aligned segment" ng-show="isLoading"><i class="loading big icon"></i></div> -->
+				<div class="ui basic center aligned segment" ng-show="isLoading">
+					<link rel="stylesheet" type="text/css" href="/css/loading.css">
+					<div class="detect_page-loading">
+						<div class="loading">
+							<div class="top"></div>
+							<div class="bottom"></div>
+							<div class="left"></div>
+							<div class="right"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="four wide column" ng-if="which === 'subscribing'" ng-controller="poiShowCtrl">

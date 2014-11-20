@@ -29,13 +29,14 @@
     "passport-weibo": "*",
     "passport-douban": "*",
     "thunkify": "*",
-    "mongoose": "^3.8.3",
+    "mongoose": "3.8.3",
     "redis": "0.10.3",
     "socket.io": "1.0",
     "node-uuid": "*",
     "co": "3.0.6",
     "pinyin": "2.3.2",
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "qiniu": "*"
   },
   "engines": {
     "node": ">= 0.11.9"

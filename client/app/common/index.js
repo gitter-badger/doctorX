@@ -1,6 +1,74 @@
 'use strict';
 
 var myApp = angular.module('myApp');
+myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 
+  function($routeProvider, $locationProvider, $httpProvider) {
+    $httpProvider.responseInterceptors.push('httpInterceptor');
+
+    $routeProvider.
+      when('/login', {
+        templateUrl: 'app/auth/login.html',
+        // controller: 'auth.loginCtrl',
+
+      }).
+      when('/register', {
+        templateUrl: 'app/auth/register.html'
+      }).
+      when('/home/:whichFeed', {
+        templateUrl: 'app/home/home.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/content/action/create', {
+        templateUrl: 'app/content/create.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/content/home/:contentId', {
+        templateUrl: 'app/content/home.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/moduleA', {
+        templateUrl: 'app/moduleA/view.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/content/live/:roomKey', {
+        templateUrl: 'app/room/room.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/circle', {
+        templateUrl: 'app/circle/relation.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/setting', {
+        templateUrl: 'app/setting/setting.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      when('/fav', {
+        templateUrl: 'app/poi/fav.html',
+        resolve: {
+          checkUser: checkUserFn
+        }
+      }).
+      otherwise({
+        redirectTo: '/home/following'
+      });
+    $locationProvider.html5Mode(false).hashPrefix('!');
+  }
+]);
+
 myApp.directive('focusMe', function($timeout) {
   return {
     scope: { trigger: '@focusMe' },

@@ -23,6 +23,7 @@ require('./server/lib/user')(app);
 require('./server/lib/login')(app);
 require('./server/lib/passport')(app);
 
+require('./server/lib/file')(app);
 require('./server/lib/content')(app);
 require('./server/lib/search')(app);
 require('./server/lib/word')(app);
@@ -31,6 +32,7 @@ require('./server/lib/poi')(app);
 require('./server/lib/friend')(app);
 require('./server/lib/group')(app);
 require('./server/lib/im')(app);
+
 // require('./server/lib/post')(app);
 // require('./server/lib/content')(app);
 // require('./server/lib/channel')(app);
