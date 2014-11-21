@@ -1,3 +1,6 @@
+// Currently only config for mongoDB
+// Will be refactorred for Redis configuration
+
 module.exports = function(app) {
   var mongoose = require('mongoose');
   mongoose.connect('mongodb://localhost/doctorX');

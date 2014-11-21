@@ -16,7 +16,8 @@ module.controller('poiShowCtrl', function($scope, poiService) {
   });
 });
 
-module.factory('poiService', function($http, userService) {
+// module.factory('poiService', function($http, userService) {
+module.factory('poiService', function($http) {
   return {
     subscribe: function(contentIds, success, failure) {
       var postData = { 'contentIds': contentIds };

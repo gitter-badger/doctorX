@@ -7,9 +7,9 @@ var middleware = require('./middleware');
 function load (app) {
   var fileRouter = new Router();
   
-  fileRouter.get('/file/uploadToken', middleware.getUploadToken);
+  fileRouter.get('/file/uploadToken', auth.authToken, middleware.getUploadToken);
 
-  fileRouter.post('/file/didUpload', parser, middleware.didUpload);
+  fileRouter.post('/file/didUpload', auth.authToken, parser, middleware.didUpload);
 
 
   // fileRouter.get('/file/findPeopleByGRcode', auth.authToken, middleware.findFriendByGRcode);

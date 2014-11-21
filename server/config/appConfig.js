@@ -5,5 +5,8 @@ module.exports = {
   IVCODE_EXPIRE: 86400, //24*60*60 seconds, 1 day by default
   GRCODE_EXPIRE: 86400,
   IM_UP_EXPIRE: 300,
-  REGISTRATION_OPEN: true
+  REGISTRATION_OPEN: true,
+  QINIU_ACCESS_KEY: 'ALQ_Rw_Fo0PENFQr9R0vIk0GNWMOIxcTNjhnZnoZ',
+  QINIU_SECRET_KEY: 'ZmlEBJYDrDNfgzxZbLIwgCbtwsZLt1gbTw-kMf76',
+  QINIU_PUBLICBUCKET_NAME: 'doctorx-public'
 }

@@ -1,16 +1,16 @@
 'use strict';
 // var fileFn = require('./fn');
+var config = require('../../config/appConfig.js');
 
 var qiniu = require('qiniu');
+qiniu.conf.ACCESS_KEY = config.QINIU_ACCESS_KEY;
+qiniu.conf.SECRET_KEY = config.QINIU_SECRET_KEY;
 
-qiniu.conf.ACCESS_KEY = 'ALQ_Rw_Fo0PENFQr9R0vIk0GNWMOIxcTNjhnZnoZ';
-qiniu.conf.SECRET_KEY = 'ZmlEBJYDrDNfgzxZbLIwgCbtwsZLt1gbTw-kMf76';
-// qiniu.conf.returnBody = '{\"key\": $(key), \"hash\": $(etag), \"w\": $(imageInfo.width), \"h\": $(imageInfo.height)}';
 
 var getUploadToken = function *(next) {
   try {
 
-    var putPolicy = new qiniu.rs.PutPolicy('doctorx-public');
+    var putPolicy = new qiniu.rs.PutPolicy(config.QINIU_PUBLICBUCKET_NAME);
     putPolicy.returnBody = '{\"key\": $(key), \"hash\": $(etag), \"w\": $(imageInfo.width), \"h\": $(imageInfo.height)}';
     
     var token = putPolicy.token();

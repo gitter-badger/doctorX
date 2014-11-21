@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo Run by forever.
 echo doctorX root path is [${doctorX}]
 

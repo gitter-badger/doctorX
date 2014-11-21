@@ -74,7 +74,8 @@ module.controller('feedCtrl', function($scope, $timeout, feedService) {
   
 });
 
-module.factory('feedService', function($http, userService) {
+// module.factory('feedService', function($http, userService) {
+module.factory('feedService', function($http) {
   return {
     following: function(which, last, count, success, failure) {
       // console.log('feedService to get', which, '...');
