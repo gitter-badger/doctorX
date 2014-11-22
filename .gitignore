@@ -1,5 +1,6 @@
 .DS_Store
 mongodata/*
-log/*
+logs/*
 build/*
 node_modules/*
+server/config/appConfig.js
