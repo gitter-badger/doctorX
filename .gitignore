@@ -3,4 +3,5 @@ mongodata/*
 logs/*
 build/*
 node_modules/*
+server/test/*
 server/config/appConfig.js
