@@ -37,8 +37,8 @@ subPublic.subscribe('public');
 
 var io = require('socket.io')();
 
-var allClients = [];  //key: userid, value: client socket object
-var allUserId = []; //key: socketid, value: userid
+var allClients = [];  //key: userid, value: client socket object referrence
+var allUserId = []; //key: socketid, value: userid (just plain mapping info)
 
 var personalLisenter = function(channel, message){
   try {

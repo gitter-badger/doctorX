@@ -36,6 +36,53 @@ body {
 #menuBar > .header.item {
   /*background-color: #468eaf;*/
 }
+
+.om_btn {
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  -moz-box-shadow:rgba(0,0,0,0.1) 0 1px 1px,rgba(0,0,0,0.05) 0 -3px 0 0 inset;
+  -webkit-box-shadow:rgba(0,0,0,0.1) 0 1px 1px,rgba(0,0,0,0.05) 0 -3px 0 0 inset;box-shadow:rgba(0,0,0,0.1) 0 1px 1px,rgba(0,0,0,0.05) 0 -3px 0 0 inset;
+  background-color:white;
+  border:none;
+  color:#378bc3;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  height:40px;
+  line-height:37px;padding:0 10px;text-align:center;
+  text-decoration:none;vertical-align:middle;
+}
+.om_btn:hover {
+  color:#215273
+}
+.om_btn.block {
+  display:block;width:100%
+}
+.om_btn.primary {
+  background-color:#6caae4;
+  color:white
+}
+.om_btn.primary:hover {
+  background-color:#378bc3
+}
+.om_btn.success {
+  background-color:#8aa679;
+  color:white
+}
+.om_btn.success:hover {
+  background-color:#6f9358
+}
+.om_btn.danger {
+  background-color:#cc4e30;
+  color:white
+}
+.om_btn.danger:hover {
+  background-color:#c0332d
+}
+
+
 /* link */
 a {
 	color: #61a9ca;
@@ -468,6 +515,7 @@ a.ui.lightnavy.label:hover:before {
   word-wrap: break-word;
   /*word-break: break-all;*/
 }
+
 .feedCard > .image {
   margin: -0.5em -0.5em 0em -0.5em;
 }

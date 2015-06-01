@@ -11,9 +11,9 @@
   </div>
   
   <!-- 搜索结果 start -->
-  <div class="ui four wide page items" ng-show="showResult">
+  <div class="ui six wide page items" ng-show="showResult">
     
-    <div class="item" ng-repeat="item in searchResult track by $index" tabindex="0">
+    <div class="item feedCard" ng-repeat="item in searchResult track by $index" tabindex="0">
       <div class="image">
         <!-- <img ng-src="http://placehold.it/225x250&text={{item.image}}" ng-click="detailItem($event, item.id)"> -->
         <!-- <img ng-src="{{item.image}}" loading-src="http://placehold.it/225x250&text=Loading" fallback-src="http://placehold.it/225x250&text=NoImage" 
@@ -32,7 +32,7 @@
   </div>
 
   <div class="ui four wide page items" ng-show="showAddItem">
-    <div class="item" ng-click="toAddContent();">
+    <div class="item feedCard" ng-click="toAddContent();">
       <div class="image">
         <img ng-src="http://placehold.it/225x250&text=NEW">
         <a class="star ui corner label">

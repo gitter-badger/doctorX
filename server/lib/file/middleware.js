@@ -39,4 +39,3 @@ var didUpload = function * (next) {
 exports.getUploadToken = getUploadToken;
 exports.didUpload = didUpload;
 
-

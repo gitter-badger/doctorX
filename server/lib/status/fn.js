@@ -46,6 +46,9 @@ var create = function *(status) {
   statusObj.save = thunkify(statusObj.save);
 
   yield statusObj.save();
+
+  // catch exception in case [Redis publish] fails, 
+  // make sure the main process of status still be able to continue
   try {
     pub.publish('status-channel', JSON.stringify(statusObj));
   } catch (err) {
